@@ -1,4 +1,4 @@
-package kernel.controllers;
+package kernel.Formatter;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;

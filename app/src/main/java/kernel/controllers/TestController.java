@@ -1,18 +1,25 @@
 package kernel.controllers;
 
+import kernel.Formatter.IFormatter;
+import kernel.jpa.Product;
+import kernel.jpa.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1")
 public class TestController
 {
-    @Qualifier("FooFormatter")
     @Autowired()
     private IFormatter m_Formatter;
+
+    @Autowired()
+    private ProductRepository productRepository;
 
     @GetMapping("/hello")
     public String getHello()
@@ -24,5 +31,11 @@ public class TestController
     public String getFormat()
     {
         return m_Formatter.Format();
+    }
+
+    @GetMapping("/products")
+    public List<Product> getProducts()
+    {
+        return productRepository.findAll();
     }
 }

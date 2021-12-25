@@ -1,4 +1,4 @@
-package kernel.controllers;
+package kernel.Formatter;
 
 public interface IFormatter
 {
