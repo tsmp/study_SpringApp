@@ -1,6 +1,7 @@
 package kernel.JDBC;
 
 import kernel.entity.SalesPeriodJDBC;
+import kernel.jpa.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -39,6 +40,16 @@ public class SalesPeriodJDBCRepository
                         rs.getDate("date_from"),
                         rs.getDate("date_to"),
                         rs.getInt("product")
+                ));
+    }
+
+    public List<Product> getProductWithActivePeriod()
+    {
+        return jdbcTemplate.query("select p.id product_id, p.name product_name from public.product p inner join "+
+                        "public.sales_period sp on p.id = sp.product where sp.date_to is null",
+                (rs, rowNum) -> new Product(
+                        rs.getInt( "product_id"),
+                        rs.getString("product_name")
                 ));
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Console;
 import java.util.List;
 
 @RestController
@@ -59,5 +60,11 @@ public class TestController
     public List<SalesPeriodJDBC> getSalesPeriodHigherPrice()
     {
         return salesPeriodJDBCRepository.getSalesPeriodPriceIsHigher(90);
+    }
+
+    @GetMapping("/products/salesactive")
+    public List<Product> getProductWithActivePeriod()
+    {
+        return salesPeriodJDBCRepository.getProductWithActivePeriod();
     }
 }
