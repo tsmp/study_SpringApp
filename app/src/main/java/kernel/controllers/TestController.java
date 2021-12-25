@@ -2,6 +2,7 @@ package kernel.controllers;
 
 import kernel.Formatter.IFormatter;
 import kernel.JDBC.SalesPeriodJDBCRepository;
+import kernel.entity.SalesPeriodJDBC;
 import kernel.jpa.Product;
 import kernel.jpa.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,11 @@ public class TestController
     public Integer getSalesCount()
     {
         return salesPeriodJDBCRepository.Count();
+    }
+
+    @GetMapping("/sales")
+    public List<SalesPeriodJDBC> getSales()
+    {
+        return salesPeriodJDBCRepository.getSalesPeriod();
     }
 }

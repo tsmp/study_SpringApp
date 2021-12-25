@@ -14,4 +14,13 @@ public class SalesPeriodJDBC
     private Date dateFrom;
     private Date dateTO;
     private Integer product;
+
+    public SalesPeriodJDBC(long id, long price, Date dateFrom, Date dateTO, Integer product)
+    {
+        this.id = id;
+        this.price = price;
+        this.dateFrom = dateFrom;
+        this.dateTO = dateTO;
+        this.product = product;
+    }
 }
