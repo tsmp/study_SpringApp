@@ -1,10 +1,10 @@
 package kernel.controllers;
 
 import kernel.Formatter.IFormatter;
+import kernel.JDBC.SalesPeriodJDBCRepository;
 import kernel.jpa.Product;
 import kernel.jpa.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +17,9 @@ public class TestController
 {
     @Autowired()
     private IFormatter m_Formatter;
+
+    @Autowired
+    private SalesPeriodJDBCRepository salesPeriodJDBCRepository;
 
     @Autowired()
     private ProductRepository productRepository;
@@ -37,5 +40,11 @@ public class TestController
     public List<Product> getProducts()
     {
         return productRepository.findAll();
+    }
+
+    @GetMapping("/sales/count")
+    public Integer getSalesCount()
+    {
+        return salesPeriodJDBCRepository.Count();
     }
 }
