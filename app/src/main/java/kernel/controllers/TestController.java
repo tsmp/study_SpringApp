@@ -54,4 +54,10 @@ public class TestController
     {
         return salesPeriodJDBCRepository.getSalesPeriod();
     }
+
+    @GetMapping("/sales/higherprice")
+    public List<SalesPeriodJDBC> getSalesPeriodHigherPrice()
+    {
+        return salesPeriodJDBCRepository.getSalesPeriodPriceIsHigher(90);
+    }
 }

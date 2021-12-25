@@ -29,4 +29,16 @@ public class SalesPeriodJDBCRepository
                         rs.getInt("product")
                 ));
     }
+
+    public List<SalesPeriodJDBC> getSalesPeriodPriceIsHigher(long price)
+    {
+        return jdbcTemplate.query(String.format("select * from public.sales_period where price >= %s",price),
+                (rs, rowNum) -> new SalesPeriodJDBC(
+                        rs.getLong( "id"),
+                        rs.getInt("price"),
+                        rs.getDate("date_from"),
+                        rs.getDate("date_to"),
+                        rs.getInt("product")
+                ));
+    }
 }
