@@ -1,4 +1,4 @@
-package kernel.jpa;
+package kernel.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

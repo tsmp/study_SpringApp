@@ -4,13 +4,12 @@ import kernel.Formatter.IFormatter;
 import kernel.JDBC.SalesPeriodJDBCRepository;
 import kernel.entity.SalesPeriodJDBC;
 import kernel.entity.SalesPeriodJPA;
-import kernel.jpa.Product;
+import kernel.entity.Product;
 import kernel.jpa.ProductRepository;
 import kernel.jpa.SalesPeriodJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Console;
 import java.util.List;
 
 @RestController

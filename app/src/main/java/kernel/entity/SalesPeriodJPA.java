@@ -1,6 +1,5 @@
 package kernel.entity;
 
-import kernel.jpa.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
