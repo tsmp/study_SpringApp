@@ -12,6 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class Product implements Serializable
 {
     @Id

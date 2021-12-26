@@ -3,12 +3,12 @@ package kernel.controllers;
 import kernel.Formatter.IFormatter;
 import kernel.JDBC.SalesPeriodJDBCRepository;
 import kernel.entity.SalesPeriodJDBC;
+import kernel.entity.SalesPeriodJPA;
 import kernel.jpa.Product;
 import kernel.jpa.ProductRepository;
+import kernel.jpa.SalesPeriodJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.Console;
 import java.util.List;
@@ -22,6 +22,9 @@ public class TestController
 
     @Autowired
     private SalesPeriodJDBCRepository salesPeriodJDBCRepository;
+
+    @Autowired
+    private SalesPeriodJPARepository salesPeriodJPARepository;
 
     @Autowired()
     private ProductRepository productRepository;
@@ -66,5 +69,43 @@ public class TestController
     public List<Product> getProductWithActivePeriod()
     {
         return salesPeriodJDBCRepository.getProductWithActivePeriod();
+    }
+
+    @GetMapping("/salesjpa")
+    public List<SalesPeriodJPA> getSalesPeriodJpa()
+    {
+        return salesPeriodJPARepository.findAll();
+    }
+
+    @PostMapping("/salesjpa")
+    public void addSalesPeriodJpa(@RequestBody SalesPeriodJPA salesPeriodJPA)
+    {
+        salesPeriodJPARepository.save(salesPeriodJPA);
+    }
+
+    @GetMapping("/maxpricejpa")
+    public Integer getMaxPriceByProductId()
+    {
+        return salesPeriodJPARepository.getMaxPriceByProductId(2);
+    }
+
+    @GetMapping("/bypricejpa")
+    public boolean getExistsByPrice()
+    {
+        return salesPeriodJPARepository.existsByPrice(150);
+    }
+
+    @GetMapping("/activejpa")
+    public List<SalesPeriodJPA> getDateToIsNull()
+    {
+        List<SalesPeriodJPA> lst = salesPeriodJPARepository.findByDateToIsNull();
+        return lst;
+    }
+
+    @GetMapping("/getbynamejpa")
+    public List<SalesPeriodJPA> getByProductName()
+    {
+        List<SalesPeriodJPA> lst = salesPeriodJPARepository.findByProductName("bike");
+        return lst;
     }
 }

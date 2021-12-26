@@ -26,17 +26,26 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="cd7e26a6-262a-464d-9f9e-be6db678e184">
+        <schema name="information_schema" object-types="table, view, sequence, function" />
+        <schema name="pg_catalog" object-types="table, view, sequence, function" />
         <schema name="public" object-types="table, view, sequence, function" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="cd7e26a6-262a-464d-9f9e-be6db678e184">
-      <console name="sql_demo" type="STANDARD" schema="information_schema" session="Main" />
+      <console name="sql_demo" type="STANDARD" schema="public" session="Main"><![CDATA[select * from sales_periods_id_seq;
+
+CREATE SEQUENCE sales_period_id_sequ START 4;
+sales_period_id_seq
+sales_period_id_sequ
+select nextval('sales_period_id_sequ');]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="cd7e26a6-262a-464d-9f9e-be6db678e184" object-ref="consoles/sql_demo" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="cd7e26a6-262a-464d-9f9e-be6db678e184" />
